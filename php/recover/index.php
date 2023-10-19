@@ -14,7 +14,18 @@
         require_once dirname(__FILE__,3).'/php/config/menu.php';
     ?>
    <div class="container-md">
-        <h2>Index de Recuperación de registros</h2>
+        <?php
+            $saltolinea = "";
+            $linea = "";
+            $fichero = fopen("../datos.txt","r") or die ("Problema al abrir el Fichero"); ///abrir fichero
+            while (!feof($fichero)) {
+                $linea = fgets($fichero);
+                $saltolinea = nl2br($linea);
+                echo "<h4>" .$saltolinea . "</h4>";
+            }
+            fclose($fichero);
+            echo "<h5>¡Fin del Listado!</h5>";
+        ?>
    </div>
 </body>
     <?php
